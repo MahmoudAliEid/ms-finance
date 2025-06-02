@@ -69,24 +69,24 @@ export default function Hero() {
       </div>
 
       {/* Main content container with perfect centering */}
-      <div className="relative z-10 w-full h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8">
+      <div className="relative z-10 w-full min-h-screen pt-16 pb-8 md:pt-20 md:pb-12 flex items-center justify-center px-3 sm:px-6 lg:px-8">
         <div className="w-full max-w-6xl mx-auto">
-          <div className="flex flex-col items-center justify-center text-center space-y-8 md:space-y-12">
+          <div className="flex flex-col items-center justify-center text-center space-y-6 sm:space-y-8 md:space-y-12">
             {/* Main Content */}
             <motion.div
               initial={{ opacity: 0, y: 50 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }}
-              className="space-y-6 md:space-y-8">
+              className="space-y-4 sm:space-y-6 md:space-y-8">
               <motion.h1
-                className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold leading-tight"
+                className="text-3xl xs:text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold leading-tight"
                 whileInView={{ scale: [0.9, 1.02, 1] }}
                 transition={{ duration: 0.6 }}>
                 <span className="bg-gradient-to-r from-gray-900 via-orange-500 to-gray-800 dark:from-gray-100 dark:via-orange-400 dark:to-gray-200 bg-clip-text text-transparent">
                   MS.Finance
                 </span>
                 <br />
-                <span className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl text-gray-700 dark:text-gray-300 font-medium mt-2 block">
+                <span className="text-xl xs:text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl text-gray-700 dark:text-gray-300 font-medium mt-1 sm:mt-2 block">
                   للاستشارات والخدمات المالية
                 </span>
               </motion.h1>
@@ -104,8 +104,8 @@ export default function Hero() {
               initial={{ opacity: 0, y: 60 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.6, ease: "easeOut" }}
-              className="w-full max-w-5xl mx-auto">
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 lg:gap-8">
+              className="w-full max-w-5xl mx-auto px-3 sm:px-0">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 md:gap-6 lg:gap-8">
                 {[
                   {
                     icon: TrendingUp,
@@ -130,26 +130,26 @@ export default function Hero() {
                   <motion.div
                     key={stat.label}
                     className="group relative"
-                    whileHover={{ y: -10 }}
+                    whileHover={{ y: -5, scale: 1.02 }}
                     transition={{
                       type: "spring",
                       stiffness: 300,
                       damping: 20,
                     }}>
                     <div className="absolute inset-0 bg-gradient-to-r from-orange-500/20 to-gray-500/20 rounded-2xl blur opacity-50 group-hover:opacity-70 transition duration-500" />
-                    <div className="relative bg-white/90 dark:bg-gray-800/90 backdrop-blur-xl rounded-2xl p-4 md:p-6 lg:p-8 shadow-xl border border-gray-200/50 dark:border-gray-700/50 hover:shadow-2xl transition-all duration-500">
+                    <div className="relative bg-white/90 dark:bg-gray-800/90 backdrop-blur-xl rounded-2xl p-3 sm:p-4 md:p-6 lg:p-8 shadow-xl border border-gray-200/50 dark:border-gray-700/50 hover:shadow-2xl transition-all duration-500">
                       <motion.div
                         whileHover={{ rotate: 360, scale: 1.1 }}
                         transition={{ duration: 0.6 }}>
                         <stat.icon
-                          className={`h-8 w-8 md:h-10  lg:h-12 lg:w-12 ${
+                          className={`h-6 w-6 sm:h-8 sm:w-8 md:h-10 lg:h-12 lg:w-12 ${
                             stat.color === "orange"
                               ? "text-orange-500"
                               : "text-gray-600"
-                          } mx-auto mb-3 md:mb-4`}
+                          } mx-auto mb-2 sm:mb-3 md:mb-4`}
                         />
                       </motion.div>
-                      <div className="text-2xl md:text-3xl lg:text-4xl font-bold text-gray-800 dark:text-white mb-1 md:mb-2">
+                      <div className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-gray-800 dark:text-white mb-1 md:mb-2">
                         {stat.prefix}
                         <Counter
                           from={stat.value === 2019 ? 2015 : 0}
@@ -178,10 +178,10 @@ export default function Hero() {
                 <Button
                   size="lg"
                   onClick={() => (window.location.href = "#contact")}
-                  className="w-full sm:w-auto bg-gradient-to-r from-orange-500 to-orange-400 hover:from-orange-600 hover:to-orange-500 text-white font-bold px-6 md:px-8 lg:px-10 py-3 md:py-4 lg:py-6 text-sm md:text-base lg:text-lg rounded-xl shadow-lg shadow-orange-500/25 hover:shadow-xl hover:shadow-orange-500/30 transition-all duration-300 flex items-center justify-center gap-2 group">
-                  <Sparkles className="h-4 w-4 md:h-5 md:w-5 group-hover:animate-spin" />
+                  className="w-full sm:w-auto bg-gradient-to-r from-orange-500 to-orange-400 hover:from-orange-600 hover:to-orange-500 text-white font-bold px-4 sm:px-6 md:px-8 py-2 sm:py-3 md:py-4 text-sm sm:text-base md:text-lg rounded-xl shadow-lg shadow-orange-500/25 hover:shadow-xl hover:shadow-orange-500/30 transition-all duration-300 flex items-center justify-center gap-2 group">
+                  <Sparkles className="h-4 w-4 group-hover:animate-spin" />
                   تواصل معنا
-                  <ChevronRight className="h-4 w-4 md:h-5 md:w-5 group-hover:translate-x-1 transition-transform" />
+                  <ChevronRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
                 </Button>
               </motion.div>
               <motion.div
@@ -191,8 +191,8 @@ export default function Hero() {
                   size="lg"
                   variant="outline"
                   onClick={() => (window.location.href = "#services")}
-                  className="w-full sm:w-auto border-2 border-orange-500/30 text-gray-700 dark:text-gray-300 hover:bg-orange-500/50 dark:hover:bg-orange-500/20 px-6 md:px-8 lg:px-10 py-3 md:py-4 lg:py-6 text-sm md:text-base lg:text-lg font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center gap-2 group backdrop-blur-sm">
-                  <LineChart className="h-4 w-4 md:h-5 md:w-5 group-hover:scale-110 transition-transform" />
+                  className="w-full sm:w-auto border-2 border-orange-500/30 text-gray-700 dark:text-gray-300 hover:bg-orange-500/50 dark:hover:bg-orange-500/20 px-4 sm:px-6 md:px-8 py-2 sm:py-3 md:py-4 text-sm sm:text-base md:text-lg font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center gap-2 group backdrop-blur-sm">
+                  <LineChart className="h-4 w-4 group-hover:scale-110 transition-transform" />
                   خدماتنا
                 </Button>
               </motion.div>
