@@ -2,11 +2,8 @@
 
 import { SectionHeading } from "@/components/section-heading";
 import { SparklesCore } from "@/components/ui/aceternity/sparkles";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
 import { motion } from "framer-motion";
-import { Mail, MapPin, Phone, Send, Sparkles } from "lucide-react";
+import { Mail, MapPin, Phone } from "lucide-react";
 import type React from "react";
 import { useState } from "react";
 import { useInView } from "react-intersection-observer";
@@ -66,7 +63,7 @@ export default function Contact() {
         <div
           ref={ref}
           className="mt-12">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-10 max-w-6xl mx-auto">
+          <div className="grid grid-cols-1 gap-10 max-w-6xl mx-auto">
             <motion.div
               initial={{ opacity: 0, x: -50 }}
               animate={inView ? { opacity: 1, x: 0 } : { opacity: 0, x: -50 }}
@@ -138,7 +135,7 @@ export default function Contact() {
                         البريد الإلكتروني
                       </h4>
                       <p className="text-gray-600 dark:text-gray-400 mt-1">
-                        info@msfinance.com
+                        info@msfinance-eg.com
                       </p>
                     </div>
                   </motion.div>
@@ -158,7 +155,7 @@ export default function Contact() {
               </div>
             </motion.div>
 
-            <motion.div
+            {/* <motion.div
               initial={{ opacity: 0, x: 50 }}
               animate={inView ? { opacity: 1, x: 0 } : { opacity: 0, x: 50 }}
               transition={{ duration: 0.5 }}
@@ -254,7 +251,7 @@ export default function Contact() {
                   </motion.div>
                 </form>
               </div>
-            </motion.div>
+            </motion.div> */}
           </div>
         </div>
       </div>
