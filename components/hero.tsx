@@ -193,7 +193,7 @@ export default function Hero() {
                   onClick={() => (window.location.href = "#services")}
                   className="w-full sm:w-auto border-2 border-orange-500/30 text-gray-700 dark:text-gray-300 hover:bg-orange-500/50 dark:hover:bg-orange-500/20 px-4 sm:px-6 md:px-8 py-2 sm:py-3 md:py-4 text-sm sm:text-base md:text-lg font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center gap-2 group backdrop-blur-sm">
                   <LineChart className="h-4 w-4 group-hover:scale-110 transition-transform" />
-                  خدماتنا
+                  الخدمات والاستشارات
                 </Button>
               </motion.div>
             </motion.div>
