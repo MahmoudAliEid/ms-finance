@@ -1,95 +1,220 @@
-"use client"
+"use client";
 
-import { SectionHeading } from "@/components/section-heading"
-import { motion } from "framer-motion"
-import { Factory, Heart, TrendingUp, User } from "lucide-react"
-import { useState } from "react"
-import { useInView } from "react-intersection-observer"
+import { SectionHeading } from "@/components/section-heading";
+import { motion } from "framer-motion";
+import { Factory, Heart, TrendingUp, User } from "lucide-react";
+import { useState } from "react";
+import { useInView } from "react-intersection-observer";
 
 // SVG Icons for Client Types
 const StartupIcon = () => (
-  <svg className="w-12 h-12" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <svg
+    className="w-12 h-12"
+    viewBox="0 0 100 100"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg">
     <defs>
-      <linearGradient id="startupGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-        <stop offset="0%" stopColor="rgb(59, 130, 246)" />
-        <stop offset="100%" stopColor="rgb(34, 211, 238)" />
+      <linearGradient
+        id="startupGradient"
+        x1="0%"
+        y1="0%"
+        x2="100%"
+        y2="100%">
+        <stop
+          offset="0%"
+          stopColor="rgb(59, 130, 246)"
+        />
+        <stop
+          offset="100%"
+          stopColor="rgb(34, 211, 238)"
+        />
       </linearGradient>
     </defs>
-    <path d="M50 20L45 35L50 50L55 35Z" fill="url(#startupGradient)" />
-    <circle cx="50" cy="60" r="8" fill="url(#startupGradient)" opacity="0.7" />
-    <path d="M30 70L50 60L70 70L65 80L35 80Z" fill="url(#startupGradient)" opacity="0.5" />
-    <path d="M40 25L35 15L45 10" stroke="url(#startupGradient)" strokeWidth="2" fill="none" strokeLinecap="round" />
-    <path d="M60 25L65 15L55 10" stroke="url(#startupGradient)" strokeWidth="2" fill="none" strokeLinecap="round" />
-    <path d="M25 45L15 40L20 50" stroke="url(#startupGradient)" strokeWidth="2" fill="none" strokeLinecap="round" />
-    <path d="M75 45L85 40L80 50" stroke="url(#startupGradient)" strokeWidth="2" fill="none" strokeLinecap="round" />
+    <path
+      d="M50 20L45 35L50 50L55 35Z"
+      fill="url(#startupGradient)"
+    />
+    <circle
+      cx="50"
+      cy="60"
+      r="8"
+      fill="url(#startupGradient)"
+      opacity="0.7"
+    />
+    <path
+      d="M30 70L50 60L70 70L65 80L35 80Z"
+      fill="url(#startupGradient)"
+      opacity="0.5"
+    />
+    <path
+      d="M40 25L35 15L45 10"
+      stroke="url(#startupGradient)"
+      strokeWidth="2"
+      fill="none"
+      strokeLinecap="round"
+    />
+    <path
+      d="M60 25L65 15L55 10"
+      stroke="url(#startupGradient)"
+      strokeWidth="2"
+      fill="none"
+      strokeLinecap="round"
+    />
+    <path
+      d="M25 45L15 40L20 50"
+      stroke="url(#startupGradient)"
+      strokeWidth="2"
+      fill="none"
+      strokeLinecap="round"
+    />
+    <path
+      d="M75 45L85 40L80 50"
+      stroke="url(#startupGradient)"
+      strokeWidth="2"
+      fill="none"
+      strokeLinecap="round"
+    />
   </svg>
-)
+);
 
 const CorporateIcon = () => (
-  <svg className="w-12 h-12" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <svg
+    className="w-12 h-12"
+    viewBox="0 0 100 100"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg">
     <defs>
-      <linearGradient id="corporateGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-        <stop offset="0%" stopColor="rgb(34, 211, 238)" />
-        <stop offset="100%" stopColor="rgb(20, 184, 166)" />
+      <linearGradient
+        id="corporateGradient"
+        x1="0%"
+        y1="0%"
+        x2="100%"
+        y2="100%">
+        <stop
+          offset="0%"
+          stopColor="rgb(34, 211, 238)"
+        />
+        <stop
+          offset="100%"
+          stopColor="rgb(20, 184, 166)"
+        />
       </linearGradient>
     </defs>
-    <rect x="25" y="30" width="50" height="50" fill="url(#corporateGradient)" opacity="0.3" />
-    <rect x="25" y="30" width="50" height="50" stroke="url(#corporateGradient)" strokeWidth="2" fill="none" />
-    <rect x="35" y="40" width="8" height="8" fill="url(#corporateGradient)" />
-    <rect x="57" y="40" width="8" height="8" fill="url(#corporateGradient)" />
-    <rect x="35" y="52" width="8" height="8" fill="url(#corporateGradient)" />
-    <rect x="57" y="52" width="8" height="8" fill="url(#corporateGradient)" />
-    <rect x="46" y="64" width="8" height="8" fill="url(#corporateGradient)" />
-    <rect x="40" y="20" width="20" height="10" fill="url(#corporateGradient)" opacity="0.7" />
+    <rect
+      x="25"
+      y="30"
+      width="50"
+      height="50"
+      fill="url(#corporateGradient)"
+      opacity="0.3"
+    />
+    <rect
+      x="25"
+      y="30"
+      width="50"
+      height="50"
+      stroke="url(#corporateGradient)"
+      strokeWidth="2"
+      fill="none"
+    />
+    <rect
+      x="35"
+      y="40"
+      width="8"
+      height="8"
+      fill="url(#corporateGradient)"
+    />
+    <rect
+      x="57"
+      y="40"
+      width="8"
+      height="8"
+      fill="url(#corporateGradient)"
+    />
+    <rect
+      x="35"
+      y="52"
+      width="8"
+      height="8"
+      fill="url(#corporateGradient)"
+    />
+    <rect
+      x="57"
+      y="52"
+      width="8"
+      height="8"
+      fill="url(#corporateGradient)"
+    />
+    <rect
+      x="46"
+      y="64"
+      width="8"
+      height="8"
+      fill="url(#corporateGradient)"
+    />
+    <rect
+      x="40"
+      y="20"
+      width="20"
+      height="10"
+      fill="url(#corporateGradient)"
+      opacity="0.7"
+    />
   </svg>
-)
+);
 
 export default function Clients() {
   const [ref, inView] = useInView({
     triggerOnce: true,
     threshold: 0.1,
-  })
+  });
 
-  const [activeTab, setActiveTab] = useState(0)
+  const [activeTab, setActiveTab] = useState(0);
 
   const clientTypes = [
     {
       title: "شركات ناشئة",
       description: "تبحث عن انطلاقة مدروسة",
       icon: <StartupIcon />,
-      details: "نساعد الشركات الناشئة في وضع الأسس المالية السليمة وإعداد خطط العمل اللازمة للنمو والتوسع.",
+      details:
+        "نساعد الشركات الناشئة في وضع الأسس المالية السليمة وإعداد خطط العمل اللازمة للنمو والتوسع.",
     },
     {
       title: "مؤسسات قائمة",
       description: "ترغب في إعادة تنظيم أعمالها",
       icon: <CorporateIcon />,
-      details: "نقدم خدمات إعادة الهيكلة المالية والإدارية للمؤسسات القائمة لتحسين كفاءتها وأدائها.",
+      details:
+        "نقدم خدمات إعادة الهيكلة المالية والإدارية للمؤسسات القائمة لتحسين كفاءتها وأدائها.",
     },
     {
       title: "مستثمرون",
       description: "يبحثون عن فرص ذات جدوى حقيقية",
       icon: <TrendingUp className="h-12 w-12 text-accent" />,
-      details: "نوفر تحليلات استثمارية شاملة ودراسات جدوى دقيقة لمساعدة المستثمرين في اتخاذ قرارات مدروسة.",
+      details:
+        "نوفر تحليلات استثمارية شاملة ودراسات جدوى دقيقة لمساعدة المستثمرين في اتخاذ قرارات مدروسة.",
     },
     {
       title: "منظمات غير ربحية",
-      description: "تسعى لتحقيق كفاءة مالية",
+      description: "تسعى لتحقي�� كفاءة مالية",
       icon: <Heart className="h-12 w-12 text-primary" />,
-      details: "نساعد المنظمات غير الربحية في تحسين إدارتها المالية وتطوير استراتيجيات التمويل المستدام.",
+      details:
+        "نساعد المنظمات غير الربحية في تحسين إدارتها المالية وتطوير استراتيجيات التمويل المستدام.",
     },
     {
       title: "شركات متوسطة",
       description: "تخطط للتوسع والنمو",
       icon: <Factory className="h-12 w-12 text-secondary" />,
-      details: "نقدم استشارات مالية متخصصة للشركات المتوسطة التي تسعى للتوسع ودخول أسواق جديدة.",
+      details:
+        "نقدم استشارات مالية متخصصة للشركات المتوسطة التي تسعى للتوسع ودخول أسواق جديدة.",
     },
     {
       title: "رواد أعمال",
       description: "يحتاجون لتخطيط مالي سليم",
       icon: <User className="h-12 w-12 text-accent" />,
-      details: "نوفر الدعم المالي والاستشاري لرواد الأعمال لتحويل أفكارهم إلى مشاريع ناجحة ومربحة.",
+      details:
+        "نوفر الدعم المالي والاستشاري لرواد الأعمال لتحويل أفكارهم إلى مشاريع ناجحة ومربحة.",
     },
-  ]
+  ];
 
   return (
     <section

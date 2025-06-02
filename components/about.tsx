@@ -1,21 +1,43 @@
-"use client"
-import { SectionHeading } from "@/components/section-heading"
-import { CardHoverEffect } from "@/components/ui/aceternity/card-hover-effect"
-import { TracingBeam } from "@/components/ui/aceternity/tracing-beam"
-import { motion } from "framer-motion"
-import { Building2, Eye, Target, Users } from "lucide-react"
-import { useInView } from "react-intersection-observer"
+"use client";
+import { SectionHeading } from "@/components/section-heading";
+import { CardHoverEffect } from "@/components/ui/aceternity/card-hover-effect";
+import { TracingBeam } from "@/components/ui/aceternity/tracing-beam";
+import { motion } from "framer-motion";
+import { Building2, Eye, Target, Users } from "lucide-react";
+import { useInView } from "react-intersection-observer";
 
 // SVG Icons for Values
 const InnovationIcon = () => (
-  <svg className="w-8 h-8" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <svg
+    className="w-8 h-8"
+    viewBox="0 0 100 100"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg">
     <defs>
-      <linearGradient id="innovationGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-        <stop offset="0%" stopColor="rgb(59, 130, 246)" />
-        <stop offset="100%" stopColor="rgb(34, 211, 238)" />
+      <linearGradient
+        id="innovationGradient"
+        x1="0%"
+        y1="0%"
+        x2="100%"
+        y2="100%">
+        <stop
+          offset="0%"
+          stopColor="rgb(249, 115, 22)"
+        />
+        <stop
+          offset="100%"
+          stopColor="rgb(251, 146, 60)"
+        />
       </linearGradient>
     </defs>
-    <circle cx="50" cy="35" r="15" fill="none" stroke="url(#innovationGradient)" strokeWidth="3" />
+    <circle
+      cx="50"
+      cy="35"
+      r="15"
+      fill="none"
+      stroke="url(#innovationGradient)"
+      strokeWidth="3"
+    />
     <path
       d="M40 50L45 55L60 40"
       stroke="url(#innovationGradient)"
@@ -24,7 +46,15 @@ const InnovationIcon = () => (
       strokeLinecap="round"
       strokeLinejoin="round"
     />
-    <rect x="35" y="65" width="30" height="20" rx="3" fill="url(#innovationGradient)" opacity="0.3" />
+    <rect
+      x="35"
+      y="65"
+      width="30"
+      height="20"
+      rx="3"
+      fill="url(#innovationGradient)"
+      opacity="0.3"
+    />
     <path
       d="M45 20L50 10L55 20"
       stroke="url(#innovationGradient)"
@@ -50,17 +80,36 @@ const InnovationIcon = () => (
       strokeLinejoin="round"
     />
   </svg>
-)
+);
 
 const TrustIcon = () => (
-  <svg className="w-8 h-8" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <svg
+    className="w-8 h-8"
+    viewBox="0 0 100 100"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg">
     <defs>
-      <linearGradient id="trustGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-        <stop offset="0%" stopColor="rgb(34, 211, 238)" />
-        <stop offset="100%" stopColor="rgb(20, 184, 166)" />
+      <linearGradient
+        id="trustGradient"
+        x1="0%"
+        y1="0%"
+        x2="100%"
+        y2="100%">
+        <stop
+          offset="0%"
+          stopColor="rgb(249, 115, 22)"
+        />
+        <stop
+          offset="100%"
+          stopColor="rgb(107, 114, 128)"
+        />
       </linearGradient>
     </defs>
-    <path d="M50 15L30 25V45C30 60 50 75 50 75C50 75 70 60 70 45V25L50 15Z" fill="url(#trustGradient)" opacity="0.3" />
+    <path
+      d="M50 15L30 25V45C30 60 50 75 50 75C50 75 70 60 70 45V25L50 15Z"
+      fill="url(#trustGradient)"
+      opacity="0.3"
+    />
     <path
       d="M50 15L30 25V45C30 60 50 75 50 75C50 75 70 60 70 45V25L50 15Z"
       stroke="url(#trustGradient)"
@@ -76,32 +125,87 @@ const TrustIcon = () => (
       strokeLinejoin="round"
     />
   </svg>
-)
+);
 
 const SpeedIcon = () => (
-  <svg className="w-8 h-8" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <svg
+    className="w-8 h-8"
+    viewBox="0 0 100 100"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg">
     <defs>
-      <linearGradient id="speedGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-        <stop offset="0%" stopColor="rgb(20, 184, 166)" />
-        <stop offset="100%" stopColor="rgb(59, 130, 246)" />
+      <linearGradient
+        id="speedGradient"
+        x1="0%"
+        y1="0%"
+        x2="100%"
+        y2="100%">
+        <stop
+          offset="0%"
+          stopColor="rgb(249, 115, 22)"
+        />
+        <stop
+          offset="100%"
+          stopColor="rgb(251, 146, 60)"
+        />
       </linearGradient>
     </defs>
-    <circle cx="50" cy="50" r="30" fill="none" stroke="url(#speedGradient)" strokeWidth="3" />
-    <path d="M50 50L65 35" stroke="url(#speedGradient)" strokeWidth="3" strokeLinecap="round" />
-    <circle cx="50" cy="50" r="3" fill="url(#speedGradient)" />
-    <path d="M20 50L30 45L30 55Z" fill="url(#speedGradient)" />
-    <path d="M25 30L35 25L30 35Z" fill="url(#speedGradient)" />
-    <path d="M25 70L35 75L30 65Z" fill="url(#speedGradient)" />
+    <circle
+      cx="50"
+      cy="50"
+      r="30"
+      fill="none"
+      stroke="url(#speedGradient)"
+      strokeWidth="3"
+    />
+    <path
+      d="M50 50L65 35"
+      stroke="url(#speedGradient)"
+      strokeWidth="3"
+      strokeLinecap="round"
+    />
+    <circle
+      cx="50"
+      cy="50"
+      r="3"
+      fill="url(#speedGradient)"
+    />
+    <path
+      d="M20 50L30 45L30 55Z"
+      fill="url(#speedGradient)"
+    />
+    <path
+      d="M25 30L35 25L30 35Z"
+      fill="url(#speedGradient)"
+    />
+    <path
+      d="M25 70L35 75L30 65Z"
+      fill="url(#speedGradient)"
+    />
   </svg>
-)
+);
 
 const QualityIcon = () => (
-  <svg className="w-8 h-8" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <svg
+    className="w-8 h-8"
+    viewBox="0 0 100 100"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg">
     <defs>
-      <linearGradient id="qualityGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-        <stop offset="0%" stopColor="rgb(59, 130, 246)" />
-        <stop offset="50%" stopColor="rgb(34, 211, 238)" />
-        <stop offset="100%" stopColor="rgb(20, 184, 166)" />
+      <linearGradient
+        id="qualityGradient"
+        x1="0%"
+        y1="0%"
+        x2="100%"
+        y2="100%">
+        <stop
+          offset="0%"
+          stopColor="rgb(249, 115, 22)"
+        />
+        <stop
+          offset="100%"
+          stopColor="rgb(251, 146, 60)"
+        />
       </linearGradient>
     </defs>
     <path
@@ -115,15 +219,20 @@ const QualityIcon = () => (
       strokeWidth="2"
       fill="none"
     />
-    <circle cx="50" cy="50" r="8" fill="url(#qualityGradient)" />
+    <circle
+      cx="50"
+      cy="50"
+      r="8"
+      fill="url(#qualityGradient)"
+    />
   </svg>
-)
+);
 
 export default function About() {
   const [ref, inView] = useInView({
     triggerOnce: true,
     threshold: 0.1,
-  })
+  });
 
   const aboutItems = [
     {
@@ -154,7 +263,7 @@ export default function About() {
       icon: <Target className="h-12 w-12 text-primary" />,
       gradient: "from-primary/20 to-secondary/20",
     },
-  ]
+  ];
 
   const values = [
     {
@@ -177,16 +286,26 @@ export default function About() {
       title: "الجودة",
       description: "نلتزم بأعلى معايير الجودة في جميع خدماتنا",
     },
-  ]
+  ];
 
   return (
-    <section id="about" className="py-12 md:py-16 lg:py-20 bg-gray-50/50 dark:bg-gray-900/50">
+    <section
+      id="about"
+      className="py-12 md:py-16 lg:py-20 bg-gray-50/50 dark:bg-gray-900/50">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <SectionHeading title="من نحن" subtitle="تعرف على شركة MS.Finance" />
+        <SectionHeading
+          title="من نحن"
+          subtitle="تعرف على شركة MS.Finance"
+        />
 
         <TracingBeam>
-          <div ref={ref} className="mt-8 md:mt-12">
-            <CardHoverEffect items={aboutItems} className="grid-cols-1 md:grid-cols-2" />
+          <div
+            ref={ref}
+            className="mt-8 md:mt-12">
+            <CardHoverEffect
+              items={aboutItems}
+              className="grid-cols-1 md:grid-cols-2"
+            />
           </div>
         </TracingBeam>
 
@@ -196,8 +315,7 @@ export default function About() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="mt-16 md:mt-20"
-        >
+          className="mt-16 md:mt-20">
           <div className="text-center mb-8 md:mb-12">
             <h3 className="text-2xl md:text-3xl font-bold text-gray-800 dark:text-white mb-4">
               <span className="bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-transparent">
@@ -210,7 +328,7 @@ export default function About() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
+          <div className="grid grid-cols-1  sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
             {values.map((value, index) => (
               <motion.div
                 key={value.title}
@@ -219,16 +337,18 @@ export default function About() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
                 whileHover={{ y: -5 }}
-                className="group"
-              >
-                <div className="relative h-52 bg-white dark:bg-gray-800 rounded-xl p-4 md:p-6 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-200/50 dark:border-gray-700/50">
+                className="group">
+                <div className="relative bg-white h-52 dark:bg-gray-800 rounded-xl p-4 md:p-6 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-200/50 dark:border-gray-700/50">
                   <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-secondary/5 to-accent/5 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                   <div className="relative">
                     <motion.div
                       whileHover={{ scale: 1.1, rotate: 5 }}
-                      transition={{ type: "spring", stiffness: 300, damping: 20 }}
-                      className="w-12 h-12 md:w-16 md:h-16 bg-gradient-to-br from-primary/10 via-secondary/10 to-accent/10 rounded-lg flex items-center justify-center mb-3 md:mb-4 mx-auto"
-                    >
+                      transition={{
+                        type: "spring",
+                        stiffness: 300,
+                        damping: 20,
+                      }}
+                      className="w-12 h-12 md:w-16 md:h-16 bg-gradient-to-br from-primary/10 via-secondary/10 to-accent/10 rounded-lg flex items-center justify-center mb-3 md:mb-4 mx-auto">
                       {value.icon}
                     </motion.div>
                     <h4 className="text-base md:text-lg font-bold text-gray-800 dark:text-white mb-2 text-center">
@@ -245,5 +365,5 @@ export default function About() {
         </motion.div>
       </div>
     </section>
-  )
+  );
 }

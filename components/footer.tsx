@@ -1,11 +1,12 @@
 "use client"
 
-import { motion } from "framer-motion"
-import { Mail, MapPin, Phone } from "lucide-react"
-import Link from "next/link"
+import { motion } from "framer-motion";
+import { Mail, MapPin, Phone } from "lucide-react";
+import Image from "next/image";
+import Link from "next/link";
 
 export default function Footer() {
-  const currentYear = new Date().getFullYear()
+  const currentYear = new Date().getFullYear();
 
   return (
     <footer className="bg-gray-900 dark:bg-gray-950 text-white py-16 relative overflow-hidden">
@@ -39,16 +40,29 @@ export default function Footer() {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
           <div>
-            <Link href="/" className="flex items-center mb-6 group">
-              <div className="w-12 h-12 bg-gradient-to-br from-primary via-secondary to-accent rounded-xl flex items-center justify-center shadow-lg group-hover:shadow-primary/25 transition-all duration-300">
-                <span className="text-xl font-bold text-white">MS</span>
-              </div>
-              <span className="mr-3 text-xl font-bold bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-transparent">
-                MS.Finance
-              </span>
+            <Link
+              href="/"
+              className="flex items-center group">
+              <motion.div
+                whileHover={{ scale: 1.05 }}
+                transition={{ type: "spring", stiffness: 400, damping: 10 }}
+                className="relative">
+                <div className="relative w-32 h-12 md:w-40 md:h-14">
+                  <Image
+                    src="/logo.jpeg"
+                    alt="MS Finance Logo"
+                    fill
+                    className="object-contain"
+                    priority
+                  />
+                </div>
+                <div className="absolute -inset-2 bg-gradient-to-r from-orange-500/10 via-gray-500/10 to-orange-500/10 rounded-xl blur opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              </motion.div>
             </Link>
+
             <p className="text-gray-400 mb-6">
-              شريكك الموثوق في تقديم خدمات الاستشارات المالية والإدارية للشركات ورواد الأعمال.
+              شريكك الموثوق في تقديم خدمات الاستشارات المالية والإدارية للشركات
+              ورواد الأعمال.
             </p>
             {/* <div className="flex space-x-4 space-x-reverse">
               {[
@@ -84,12 +98,10 @@ export default function Footer() {
                 <motion.li
                   key={link.name}
                   whileHover={{ x: 5 }}
-                  transition={{ type: "spring", stiffness: 300, damping: 20 }}
-                >
+                  transition={{ type: "spring", stiffness: 300, damping: 20 }}>
                   <Link
                     href={link.href}
-                    className="text-gray-400 hover:text-white transition-colors flex items-center group"
-                  >
+                    className="text-gray-400 hover:text-white transition-colors flex items-center group">
                     <span className="w-1.5 h-1.5 rounded-full bg-primary/50 mr-2 group-hover:bg-primary transition-colors"></span>
                     {link.name}
                   </Link>
@@ -105,7 +117,10 @@ export default function Footer() {
             <ul className="space-y-4 text-gray-400">
               <li className="flex items-start">
                 <MapPin className="h-5 w-5 text-primary mt-1 ml-2 flex-shrink-0" />
-                <span>الجيزة - السادس من أكتوبر - المحور المركزي - مبنى أ15 بجوار النيابة الإدارية</span>
+                <span>
+                  الجيزة - السادس من أكتوبر - المحور المركزي - مبنى أ15 بجوار
+                  النيابة الإدارية
+                </span>
               </li>
               <li className="flex items-center">
                 <Phone className="h-5 w-5 text-secondary ml-2 flex-shrink-0" />
@@ -122,16 +137,15 @@ export default function Footer() {
         <div className="border-t border-gray-800 mt-12 pt-8 text-center text-gray-500 text-sm">
           <p>© {currentYear} MS.Finance. جميع الحقوق محفوظة.</p>
           <div className="mt-2 flex justify-center space-x-4 space-x-reverse">
-            <Link href="#" className="hover:text-gray-400 transition-colors">
-              سياسة الخصوصية
-            </Link>
-            <span>|</span>
-            <Link href="#" className="hover:text-gray-400 transition-colors">
-              الشروط والأحكام
+            <Link
+              href="https://shimaamohamed.bio.link/"
+              target="_blank"
+              className="hover:text-gray-400 transition-colors">
+              تصميم وتطوير بواسطة MS
             </Link>
           </div>
         </div>
       </div>
     </footer>
-  )
+  );
 }

@@ -10,11 +10,11 @@
     --card-foreground: 240 10% 3.9%;
     --popover: 0 0% 100%;
     --popover-foreground: 240 10% 3.9%;
-    --primary: 59 130 246;
+    --primary: 249 115 22;
     --primary-foreground: 255 255 255;
-    --secondary: 34 211 238;
+    --secondary: 107 114 128;
     --secondary-foreground: 255 255 255;
-    --accent: 20 184 166;
+    --accent: 249 115 22;
     --accent-foreground: 255 255 255;
     --muted: 240 4.8% 95.9%;
     --muted-foreground: 240 3.8% 46.1%;
@@ -22,7 +22,7 @@
     --destructive-foreground: 0 0% 98%;
     --border: 240 5.9% 90%;
     --input: 240 5.9% 90%;
-    --ring: 59 130 246;
+    --ring: 249 115 22;
     --radius: 0.75rem;
   }
 
@@ -33,11 +33,11 @@
     --card-foreground: 0 0% 98%;
     --popover: 240 10% 3.9%;
     --popover-foreground: 0 0% 98%;
-    --primary: 59 130 246;
+    --primary: 249 115 22;
     --primary-foreground: 255 255 255;
-    --secondary: 34 211 238;
+    --secondary: 107 114 128;
     --secondary-foreground: 255 255 255;
-    --accent: 20 184 166;
+    --accent: 249 115 22;
     --accent-foreground: 255 255 255;
     --muted: 240 3.7% 15.9%;
     --muted-foreground: 240 5% 64.9%;
@@ -45,7 +45,7 @@
     --destructive-foreground: 0 0% 98%;
     --border: 240 3.7% 15.9%;
     --input: 240 3.7% 15.9%;
-    --ring: 59 130 246;
+    --ring: 249 115 22;
   }
 }
 
@@ -63,7 +63,7 @@
 }
 
 .text-gradient {
-  background: linear-gradient(to right, rgb(59 130 246), rgb(34 211 238), rgb(20 184 166));
+  background: linear-gradient(to right, rgb(249 115 22), rgb(107 114 128), rgb(249 115 22));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
@@ -78,11 +78,11 @@
 }
 
 ::-webkit-scrollbar-thumb {
-  @apply bg-gradient-to-b from-primary via-secondary to-accent rounded-full;
+  @apply bg-gradient-to-b from-orange-500 via-gray-500 to-orange-500 rounded-full;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  @apply from-primary/80 via-secondary/80 to-accent/80;
+  @apply from-orange-600 via-gray-600 to-orange-600;
 }
 
 /* Animation for infinite moving cards */
@@ -134,10 +134,10 @@
 @keyframes pulse-glow {
   0%,
   100% {
-    box-shadow: 0 0 20px rgba(59, 130, 246, 0.3);
+    box-shadow: 0 0 20px rgba(249, 115, 22, 0.3);
   }
   50% {
-    box-shadow: 0 0 40px rgba(59, 130, 246, 0.6);
+    box-shadow: 0 0 40px rgba(249, 115, 22, 0.6);
   }
 }
 
@@ -164,12 +164,12 @@
 
 /* Improved focus states */
 .focus-visible:focus-visible {
-  @apply outline-none ring-2 ring-primary ring-offset-2 ring-offset-background;
+  @apply outline-none ring-2 ring-orange-500 ring-offset-2 ring-offset-background;
 }
 
 /* Better button hover effects */
 .btn-gradient {
-  @apply bg-gradient-to-r from-primary via-secondary to-accent;
+  @apply bg-gradient-to-r from-orange-500 via-gray-500 to-orange-500;
   background-size: 200% 200%;
   transition: all 0.3s ease;
 }
@@ -177,5 +177,22 @@
 .btn-gradient:hover {
   background-position: right center;
   transform: translateY(-2px);
-  box-shadow: 0 10px 25px rgba(59, 130, 246, 0.3);
+  box-shadow: 0 10px 25px rgba(249, 115, 22, 0.3);
+}
+
+/* Orange accent utilities */
+.text-orange-gradient {
+  @apply bg-gradient-to-r from-orange-500 to-orange-400 bg-clip-text text-transparent;
+}
+
+.border-orange-gradient {
+  border-image: linear-gradient(to right, rgb(249 115 22), rgb(251 146 60)) 1;
+}
+
+.shadow-orange {
+  box-shadow: 0 4px 14px 0 rgba(249, 115, 22, 0.15);
+}
+
+.shadow-orange-lg {
+  box-shadow: 0 10px 25px -3px rgba(249, 115, 22, 0.2), 0 4px 6px -2px rgba(249, 115, 22, 0.05);
 }
