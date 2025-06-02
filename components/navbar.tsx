@@ -18,16 +18,16 @@ const navItems = [
 ];
 
 export default function Navbar() {
-  const [isOpen, setIsOpen] = useState(false);
+	const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [mounted, setMounted] = useState(false);
   const { theme, setTheme } = useTheme();
 
-  useEffect(() => {
+	useEffect(() => {
     setMounted(true);
   }, []);
 
-  useEffect(() => {
+	useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 50) {
         setScrolled(true);
@@ -40,9 +40,9 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  if (!mounted) return null;
+	if (!mounted) return null;
 
-  return (
+	return (
     <header
       className={cn(
         "fixed top-0 w-full z-50 transition-all duration-500",
@@ -51,15 +51,15 @@ export default function Navbar() {
           : "bg-transparent"
       )}>
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16 md:h-20">
+        <div className="flex items-center justify-between h-16 md:h-20 w-full">
           <Link
             href="/"
-            className="flex items-center group">
+            className="flex items-center group min-w-0">
             <motion.div
               whileHover={{ scale: 1.05 }}
               transition={{ type: "spring", stiffness: 400, damping: 10 }}
               className="relative">
-              <div className="relative w-32 h-12 md:w-40 md:h-14">
+              <div className="relative w-24 h-10 xs:w-28 xs:h-11 sm:w-32 sm:h-12 md:w-40 md:h-14">
                 <Image
                   src="/logo.jpeg"
                   alt="MS Finance Logo"
@@ -72,7 +72,8 @@ export default function Navbar() {
             </motion.div>
           </Link>
 
-          <nav className="hidden md:flex items-center space-x-1 space-x-reverse">
+          {/* Desktop nav */}
+          <nav className="hidden md:flex items-center flex-wrap gap-x-1 gap-y-2 space-x-reverse min-w-0">
             {navItems.map((item, index) => (
               <motion.div
                 key={item.name}
@@ -81,13 +82,12 @@ export default function Navbar() {
                 transition={{ delay: index * 0.1 }}>
                 <Link
                   href={item.href}
-                  className="relative px-4 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-orange-500 transition-colors group">
+                  className="relative px-2 sm:px-4 py-2 text-xs sm:text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-orange-500 transition-colors group whitespace-nowrap">
                   {item.name}
                   <span className="absolute inset-x-0 bottom-0 h-0.5 bg-gradient-to-r from-orange-500 to-orange-400 scale-x-0 group-hover:scale-x-100 transition-transform duration-300" />
                 </Link>
               </motion.div>
             ))}
-
             <Button
               variant="ghost"
               size="icon"
@@ -99,13 +99,13 @@ export default function Navbar() {
                 <Moon className="h-5 w-5 text-orange-500" />
               )}
             </Button>
-
-            <Button className="mr-4 bg-gradient-to-r from-orange-500 to-orange-400 hover:from-orange-600 hover:to-orange-500 text-white shadow-lg hover:shadow-xl transition-all duration-300">
+            <Button className="mr-2 sm:mr-4 bg-gradient-to-r from-orange-500 to-orange-400 hover:from-orange-600 hover:to-orange-500 text-white shadow-lg hover:shadow-xl transition-all duration-300 whitespace-nowrap">
               تواصل معنا
             </Button>
           </nav>
 
-          <div className="flex md:hidden items-center gap-2">
+          {/* Mobile nav toggle */}
+          <div className="flex md:hidden items-center gap-1 xs:gap-2">
             <Button
               variant="ghost"
               size="icon"
@@ -139,7 +139,7 @@ export default function Navbar() {
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.3 }}
-            className="md:hidden bg-white/95 dark:bg-gray-900/95 backdrop-blur-md shadow-lg">
+            className="md:hidden bg-white/95 dark:bg-gray-900/95 backdrop-blur-md shadow-lg border-b border-orange-100 dark:border-orange-900">
             <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
               {navItems.map((item, index) => (
                 <motion.div
